@@ -1,16 +1,22 @@
-import { $, component$, useStore } from "@builder.io/qwik";
+import { $, component$, useClientEffect$, useStore } from "@builder.io/qwik";
 import Swal from "sweetalert2";
 import { User } from "~/models/User";
 import auth from "~/services/auth-service";
 
-export default component$(() => {
+export default component$(({ request, response }: any) => {
   const state = useStore({ username: "", password: "" });
+  useClientEffect$(() => {
+    if (auth.isLoggedIn()) {
+      location.replace("http://localhost:5173");
+    }
+  });
 
   const login = $(() => {
     const user: User = {
       username: state.username,
       password: state.password,
     };
+    console.log(auth.isLoggedIn());
     if (!auth.isLoggedIn()) {
       auth
         .login(user)

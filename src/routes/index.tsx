@@ -1,20 +1,29 @@
-import { component$ } from "@builder.io/qwik";
+import { $, component$, useClientEffect$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import LargeBox from "~/components/large-box";
 import SmallBox from "~/components/small-box";
 import { Queue } from "~/models/Queue";
+import auth from "~/services/auth-service";
 
 export default component$(() => {
-  
-  const queueList: Queue[] = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+  useClientEffect$(() => {
+    if (!auth.isLoggedIn()) {
+      location.replace("http://localhost:5173/login");
+    }
+  });
+
+  const logout = $(() => {
+    auth.logout();
+  });
+
   return (
     <div class="h-screen w-screen bg-frost">
-      <LargeBox {...queueList[0]}></LargeBox>
-      <div class="w-full h-2/5 flex justify-between gap-3 p-3 pt-0">
-        {queueList.map((queues) => (
-          <SmallBox {...queues}/>
-        ))}
-      </div>
+      <img
+        src="logout.png"
+        alt=""
+        class="absolute top-0 right-0 p-2 cursor-pointer"
+        onClick$={logout}
+      />
     </div>
   );
 });

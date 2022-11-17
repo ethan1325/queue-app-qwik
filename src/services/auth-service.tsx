@@ -17,21 +17,21 @@ export class AuthService {
 
   isLoggedIn() {
     if(this.getToken() !== "undefined" && this.getToken() !== null){
-      console.log(this.getToken());
+      // console.log(this.getToken());
       return true;
     }else {
       return false;
     }
   }
 
-  doLoginUser(username: string, token: string) {
+  doLoginUser(username: string, token: any) {
     this.loggedUser = username;
     this.storeToken(token);
     console.log(this.getToken());
   }
 
-  storeToken(token: string){
-    localStorage.setItem(this.JWT_TOKEN, token);
+  storeToken(token: any){
+    localStorage.setItem(this.JWT_TOKEN, token.jwtToken);
   }
 
   logout(){
