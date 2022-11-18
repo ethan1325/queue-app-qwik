@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scrollbar::-webkit-scrollbar {
+    width: 0;
+}
+
+@layer components {
+    .sidebar-icon {
+        @apply flex relative items-center justify-center h-16 w-16 bg-gray-800 my-2 mx-3 hover:bg-blue-700 rounded-3xl hover:rounded-xl transition-all cursor-pointer flex-shrink-0;
+    }
+
+    .divider {
+        @apply bg-gray-200 dark:bg-gray-800 
+            border border-gray-200 dark:border-gray-800 rounded-full mx-4 my-2;
+    }
+}

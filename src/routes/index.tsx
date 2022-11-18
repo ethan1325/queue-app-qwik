@@ -1,8 +1,5 @@
-import { $, component$, useClientEffect$ } from "@builder.io/qwik";
+import { component$, useClientEffect$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import LargeBox from "~/components/large-box";
-import SmallBox from "~/components/small-box";
-import { Queue } from "~/models/Queue";
 import auth from "~/services/auth-service";
 
 export default component$(() => {
@@ -12,18 +9,11 @@ export default component$(() => {
     }
   });
 
-  const logout = $(() => {
-    auth.logout();
-  });
-
   return (
-    <div class="h-screen w-screen bg-frost">
-      <img
-        src="logout.png"
-        alt=""
-        class="absolute top-0 right-0 p-2 cursor-pointer"
-        onClick$={logout}
-      />
+    <div>
+      <div class="i">
+        <h1 class="text-5xl text-white py-3 border-b-2 w-1/4">Dashboard</h1>
+      </div>
     </div>
   );
 });

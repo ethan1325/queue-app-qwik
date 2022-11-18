@@ -29,19 +29,18 @@ export default component$(() => {
 
   // const queueList: Queue[] = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
   const nextQueue: Queue[] = queueList.slice(0, 1);
-  const waitingQueue: Queue[] = queueList.slice(1, queueList.length+1);
+  const waitingQueue: Queue[] = queueList.slice(1, queueList.length + 1);
   // console.log(queueList[0]);
   // const newQueue: Queue = queueList[0];
   // console.log(newQueue.id);
   // const queueLost: Queue[] = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
   return (
-    <div class="h-screen w-screen bg-frost">
-      <img
-        src="logout.png"
-        alt=""
-        class="absolute top-0 right-0 p-2 cursor-pointer"
-        onClick$={logout}
-      />
+    <div class="h-screen w-screen bg-gray-900">
+      <a href="/">
+        <button class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline absolute top-0 right-0 m-3">
+          BACK
+        </button>
+      </a>
       {nextQueue.map((queues) => (
         <LargeBox {...queues}></LargeBox>
       ))}

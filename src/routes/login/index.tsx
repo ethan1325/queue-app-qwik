@@ -4,7 +4,7 @@ import LoginBox from "~/components/login-box";
 
 export default component$(() => {
   return (
-    <div class="w-screen h-screen bg-sky-200 flex justify-center items-center">
+    <div class="w-screen h-screen bg-gray-800 flex justify-center items-center">
       <LoginBox/>
     </div>
   );

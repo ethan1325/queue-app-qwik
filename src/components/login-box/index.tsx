@@ -1,9 +1,11 @@
-import { $, component$, useClientEffect$, useStore } from "@builder.io/qwik";
+import { $, component$, useClientEffect$, useStore, useStylesScoped$ } from "@builder.io/qwik";
 import Swal from "sweetalert2";
 import { User } from "~/models/User";
 import auth from "~/services/auth-service";
+import styles from "./login.css?inline";
 
 export default component$(({ request, response }: any) => {
+  useStylesScoped$(styles);
   const state = useStore({ username: "", password: "" });
   useClientEffect$(() => {
     if (auth.isLoggedIn()) {
@@ -70,18 +72,21 @@ export default component$(({ request, response }: any) => {
   });
 
   return (
-    <div class="w-72 flex justify-center items-center bg-white rounded-lg shadow-xl sm:w-96 md:w-[500px] flex-col pb-5">
-      <img src="logo.png" alt="" class="w-[250px]" />
+    <div class="w-72 flex justify-center items-center bg-gray-900 rounded-lg shadow-xl sm:w-96 md:w-[500px] flex-col pb-5">
+      <div class="flex flex-col text-center p-7 m-5 rounded-full bg-gray-800 aspect-square items-center justify-center">
+        <h1 class="text-4xl font-bold text-white">QUEUE</h1>
+        <h1 class="text-4xl font-bold text-white">APP</h1>
+      </div>
       <form action="" onSubmit$={login} preventdefault:submit>
         <div class="mb-4">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2"
+            class="block text-white text-sm font-bold mb-2"
             for="username"
           >
             Username
           </label>
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="shadow appearance-none bg-gray-800 rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Username"
@@ -94,13 +99,13 @@ export default component$(({ request, response }: any) => {
         </div>
         <div class="mb-4">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2"
+            class="block text-white text-sm font-bold mb-2"
             for="password"
           >
             Password
           </label>
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            class="bg-gray-800 shadow appearance-none rounded w-full py-2 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline focus:background-gray-400"
             id="password"
             type="password"
             placeholder="******************"
@@ -113,7 +118,7 @@ export default component$(({ request, response }: any) => {
         </div>
         <div class="flex items-center justify-center">
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             SIGN IN

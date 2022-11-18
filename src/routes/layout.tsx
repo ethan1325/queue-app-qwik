@@ -1,0 +1,25 @@
+import { $, component$, Slot, useClientEffect$ } from "@builder.io/qwik";
+import type { DocumentHead } from "@builder.io/qwik-city";
+import Navbar from "~/components/navbar/navbar";
+import auth from "~/services/auth-service";
+
+export default component$(() => {
+  //   useClientEffect$(() => {
+  //     if (!auth.isLoggedIn()) {
+  //       location.replace("http://localhost:5173/login");
+  //     }
+  //   });
+
+  return (
+    <div class="h-screen w-screen bg-gray-800">
+      <Navbar />
+      <div class="ml-24">
+        <Slot /> {}
+      </div>
+    </div>
+  );
+});
+
+export const head: DocumentHead = {
+  title: "Queue App",
+};

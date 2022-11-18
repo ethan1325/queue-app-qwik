@@ -1,15 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        carafe: '#1E1514',
-        champagne: '#ECD5BB',
-        forest: '#08392B',
-        ebony: '#031812',
-        frost: '#F6FCFF',
-      }
+        carafe: "#1E1514",
+        champagne: "#ECD5BB",
+        forest: "#08392B",
+        ebony: "#031812",
+        frost: "#F6FCFF",
+        colors: {
+          gray: {
+            900: "#202225",
+            800: "#2f3136",
+            700: "#36393f",
+            600: "#4f545c",
+            400: "#d4d7dc",
+            300: "#e3e5e8",
+            200: "#ebedef",
+            100: "#f2f3f5",
+          },
+        },
+      },
     },
   },
   plugins: [],
