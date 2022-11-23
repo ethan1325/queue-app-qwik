@@ -11,9 +11,9 @@ export default component$(() => {
   //   });
 
   return (
-    <div class="h-screen w-screen bg-gray-800">
+    <div class="min-h-screen min-w-screen bg-gray-800">
       <Navbar />
-      <div class="ml-24">
+      <div class="ml-24 h-full">
         <Slot /> {}
       </div>
     </div>

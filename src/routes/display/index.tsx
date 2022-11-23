@@ -29,7 +29,9 @@ export default component$(() => {
 
   // const queueList: Queue[] = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
   const nextQueue: Queue[] = queueList.slice(0, 1);
-  const waitingQueue: Queue[] = queueList.slice(1, queueList.length + 1);
+  let displaySize = 0;
+  (queueList.length > 4) ? displaySize = 4 : displaySize = queueList.length;
+  const waitingQueue: Queue[] = queueList.slice(1, displaySize+ 1);
   // console.log(queueList[0]);
   // const newQueue: Queue = queueList[0];
   // console.log(newQueue.id);
