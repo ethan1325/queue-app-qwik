@@ -45,7 +45,7 @@ export default component$(() => {
       </a>
       {nextQueue.map((queues) => (
         <LargeBox {...queues}></LargeBox>
-      ))}
+      ))}   
       {/* <LargeBox {...queueList[3]}></LargeBox> */}
       <div class="w-full h-2/5 flex justify-between gap-3 p-3 pt-0">
         {waitingQueue.map((queues) => (

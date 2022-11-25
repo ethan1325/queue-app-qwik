@@ -6,7 +6,7 @@ export default component$((queue: Queue) => {
 
   const renderMessage = () => {
     if (queue.status === "waiting") {
-      return <p>Mohon menunggu</p>;
+      return <p class="font-light">Mohon menunggu</p>;
     } else {
       return <p class="font-light">Mohon menuju meja {queue.table}</p>;
     }

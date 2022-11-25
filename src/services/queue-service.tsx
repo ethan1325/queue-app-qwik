@@ -34,6 +34,15 @@ export class QueueService {
     })
     return response.data;
   }
+
+  async saveQueue(queue: Queue){
+    const response = await axios.post(this.apiUrl +'/update', queue,{
+      headers: {
+        "Authorization": "Bearer " + auth.getToken()
+      }
+    })
+    return response.data;
+  }
 }
 
 const QueueServiceProvider = new QueueService();

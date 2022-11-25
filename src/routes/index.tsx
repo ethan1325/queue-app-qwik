@@ -18,6 +18,7 @@ import tableService from "~/services/table-service";
 export interface sharedState {
   queueList: Queue[];
   tableList: Table[];
+  draggedQueue: Queue;
 }
 export const CTX = createContext<sharedState>("context");
 export default component$(() => {
@@ -25,6 +26,7 @@ export default component$(() => {
     {
       queueList: [],
       tableList: [],
+      draggedQueue:{id: -1, status: "waiting"}
     },
     { recursive: true }
   );
@@ -45,8 +47,14 @@ export default component$(() => {
 
   const addQueue = $(async () => {
     const savedQueue: Queue = await queueService.addQueue();
-    console.log(savedQueue);
     state.queueList.push(savedQueue);
+  });
+
+  const addTable = $(async () => {
+    let lastTableID: number = 0;
+    if(state.tableList.length != 0) lastTableID = state.tableList[state.tableList.length-1].id;
+    const newTable: Table = await tableService.addTable(lastTableID + 1);
+    state.tableList.push(newTable);
   });
 
   return (
@@ -56,6 +64,14 @@ export default component$(() => {
         {state.tableList.map((table) => (
           <TableItem {...table} />
         ))}
+        <div
+          class="h-full w-full rounded-md  flex items-center justify-center text-center flex-col  text-white p-5 min-w-[200px] relative cursor-pointer gap-1 hover:border"
+          onClick$={addTable}
+          id="addTable"
+        >
+          <img src="Assets/plus-blue.png" alt="" class="w-13" />
+          <p class="font-bold">TAMBAH MEJA</p>
+        </div>
       </div>
       <h1 class="text-5xl text-white self-center my-3">Antrian</h1>
       <div class="border-b-2 my-5 mr-4"></div>
@@ -66,7 +82,7 @@ export default component$(() => {
         <div
           class="h-full w-full rounded-md  flex items-center justify-center text-center flex-col  text-white p-5 min-w-[200px] relative cursor-pointer gap-1 hover:border"
           onClick$={addQueue}
-          id="addButton"
+          id="addQueue"
         >
           <img src="Assets/plus-blue.png" alt="" class="w-13" />
           <p class="font-bold">TAMBAH ANTRIAN</p>
