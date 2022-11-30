@@ -8,7 +8,7 @@ export default component$((queue: Queue) => {
     if (queue.status === "waiting") {
       return <p class="font-light">Mohon menunggu</p>;
     } else {
-      return <p class="font-light">Mohon menuju meja {queue.table}</p>;
+      return <p class="font-light">Sedang dilayani di meja {queue.table}</p>;
     }
   };
   
