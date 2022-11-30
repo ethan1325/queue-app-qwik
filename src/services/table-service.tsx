@@ -28,7 +28,7 @@ export class TableService {
   }
 
   async deleteTable(id: number){
-    const response = await axios.delete(`${this.apiUrl}/${id}`, {
+    await axios.delete(`${this.apiUrl}/${id}`, {
       headers: {
         "Authorization": "Bearer " + auth.getToken()
       }

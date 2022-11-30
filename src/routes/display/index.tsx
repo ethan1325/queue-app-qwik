@@ -1,4 +1,4 @@
-import { $, component$, useClientEffect$, useStore } from "@builder.io/qwik";
+import { component$, useClientEffect$, useStore } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import LargeBox from "~/components/large-box";
 import SmallBox from "~/components/small-box";
@@ -16,16 +16,9 @@ export default component$(() => {
     // console.log(state.queueList);
   });
 
-  const logout = $(() => {
-    auth.logout();
-  });
   const queueList: Queue[] = state.queueList.sort(
     (a: { id: number }, b: { id: number }) => (a.id > b.id ? 1 : -1)
   );
-
-  const returnFirstElement = () => {
-    return { ...queueList[0] };
-  };
 
   // const queueList: Queue[] = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
   const nextQueue: Queue[] = queueList.slice(0, 1);

@@ -1,6 +1,6 @@
-import auth from "~/services/auth-service";
 import axios from "axios";
 import { Queue } from "~/models/Queue";
+import auth from "~/services/auth-service";
 
 export class QueueService {
   private apiUrl = "http://localhost:8080/queue";
@@ -15,7 +15,7 @@ export class QueueService {
   }
 
   async deleteQueue(id: number){
-    const response = await axios.delete(`${this.apiUrl}/${id}`, {
+    await axios.delete(`${this.apiUrl}/${id}`, {
       headers: {
         "Authorization": "Bearer " + auth.getToken()
       }

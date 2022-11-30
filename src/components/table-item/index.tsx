@@ -1,9 +1,9 @@
 import { $, component$, useContext, useStore } from "@builder.io/qwik";
-import { Table } from "~/models/Table";
-import tableService from "~/services/table-service";
-import { CTX } from "~/routes/index";
-import queueService, { QueueService } from "~/services/queue-service";
 import { Queue } from "~/models/Queue";
+import { Table } from "~/models/Table";
+import { CTX } from "~/routes/index";
+import queueService from "~/services/queue-service";
+import tableService from "~/services/table-service";
 
 export default component$((table: Table) => {
   const state = useContext(CTX);
@@ -85,17 +85,17 @@ export default component$((table: Table) => {
     tableState.onDrop = false;
   });
 
-  const onDrop = $(async (e: any) => {
+  const onDrop = $(async () => {
     tableState.onDrop = false;
     if(state.draggedQueue.id !== -1){
-      let toSaveTable: Table = {
+      const toSaveTable: Table = {
         id: table.id,
         queue_id: state.draggedQueue.id,
         status: "unavailable",
       };
       tableService.saveTable(toSaveTable);
       state.tableList[await returnIndex(table.id)] = toSaveTable;
-      let toSaveQueue: Queue = {
+      const toSaveQueue: Queue = {
         id: state.draggedQueue.id,
         table: table.id,
         status: "assigned",

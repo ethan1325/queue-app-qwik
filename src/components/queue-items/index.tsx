@@ -47,7 +47,7 @@ export default component$((queue: Queue) => {
     state.queueList.splice(await returnIndex(queue.id), 1);
   });
 
-  const onDragStart = $((e: any) => {
+  const onDragStart = $(() => {
     state.draggedQueue = queue;
   });
 

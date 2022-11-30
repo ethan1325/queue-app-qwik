@@ -1,7 +1,6 @@
-import { $, component$, Slot, useClientEffect$ } from "@builder.io/qwik";
+import { component$, Slot } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Navbar from "~/components/navbar/navbar";
-import auth from "~/services/auth-service";
 
 export default component$(() => {
   //   useClientEffect$(() => {
