@@ -1,4 +1,4 @@
-import { component$, useClientEffect$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { Queue } from "~/models/Queue";
 
 export default component$((queue: Queue) => {

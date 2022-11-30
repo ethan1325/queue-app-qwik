@@ -4,7 +4,7 @@ import { User } from "~/models/User";
 import auth from "~/services/auth-service";
 import styles from "./login.css?inline";
 
-export default component$(({ request, response }: any) => {
+export default component$(() => {
   useStylesScoped$(styles);
   const state = useStore({ username: "", password: "" });
   useClientEffect$(() => {
